@@ -2,13 +2,17 @@
 import os
 import random
 from discord.ext import commands
+from discord.utils import get
 from dotenv import load_dotenv
 
 load_dotenv()
 token = os.getenv("discordToken")
 guild = os.getenv("discordGuild")
+serverID = os.getenv('discordServerID')
+memberID = os.getenv('memberRoleID')
 
 bot = commands.Bot(command_prefix = "!")
+client = commands.Bot(command_prefix = "!")
 
 @bot.event
 async def on_ready():
@@ -17,7 +21,9 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     await member.create_dm()
-    await member.dm_channel.send(f"Hi {member.name}, welcome to my Discord server! Please check the info channel for the rules")
+    await member.dm_channel.send(f"Hi {member.name}, welcome to the squad! Please check the info channel for the rules")
+    role = get(member.guild.roles, name = 'Members')
+    await member.add_roles(role)
 
 @bot.command(name = "99", help = "Responds with a random quote from Brooklyn 99")
 async def nine_nine(ctx):
