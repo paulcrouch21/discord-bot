@@ -44,4 +44,26 @@ async def nine_nine(ctx):
     response = random.choice(brooklyn_99_quotes)
     await ctx.send(response)
 
+@bot.command(name = "naruto", help = "Responds with a random quote from the Naruto anime series")
+async def naruto(ctx):
+    naruto_quotes = [
+        "I\'m not gonna run away, I never go back on my word! That’s my nindo: my ninja way.",
+        "I care more about others than I do myself, and I won’t let anyone hurt them.",
+        "My friends were the first to accept me for who I am.",
+        "That\'s why we endure. We are ninja. I will never forget.",
+        "Don’t underestimate me! I don’t quit and I don’t run.",
+        "If you don’t like the hand that fate’s dealt you with, fight for a new one.",
+        "Failing doesn’t give you a reason to give up, as long as you believe.",
+        "Love breeds sacrifice, which in turn breeds hatred. Then you can know pain.",
+        "Once you question your own belief it’s over.",
+        "Hard work is worthless for those that don’t believe in themselves.",
+        "When you give up, your dreams and everything else they’re gone.",
+        "Never give up.",
+        "It\'s not the face that makes someone a monster, it’s the choices they make with their lives.",
+        "Before I became a ninja I was a nobody, but I never gave up."
+    ]
+
+    response = random.choice(naruto_quotes)
+    await ctx.send(response)
+
 bot.run(token)
